@@ -1,0 +1,18 @@
+.booking-form
+  %form{ id: 'booking-form' }
+    {{place_info.place_id}}
+    %input{ type: 'hidden', 'ng-model' => 'booking.google_place_id', 'ng-init' => 'booking.google_place_id=place_info.place_id', 'value' => '{{place_info.place_id}}' }
+    .row
+      .col-xs-6
+        .form-row
+          %label Check-in date:
+          %input{ type: 'text', class: 'form-control', 'ng-model' => 'booking.check_in', 'uib-datepicker-popup' => 'dd-MMMM-yyyy', 'ng-click' => 'popupOpen(1)', 'is-open' => 'popup1.opened', 'ng-required' => 'true' }
+      .col-xs-6
+        .form-row
+          %label Check-out:
+          %input{ type: 'text', class: 'form-control', 'ng-model' => 'booking.check_out', 'uib-datepicker-popup' => 'dd-MMMM-yyyy', 'ng-click' => 'popupOpen(2)', 'is-open' => 'popup2.opened', 'ng-required' => 'true' }
+    .form-row
+      %label Comments:
+      %textarea{ class: 'form-control', rows: 3, 'ng-model' => 'booking.comments' }
+    .form-row
+      %input{ type: 'submit', class: 'btn btn-primary', value: 'Book', 'ng-click' => 'book()' }

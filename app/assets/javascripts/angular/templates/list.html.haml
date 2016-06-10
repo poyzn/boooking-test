@@ -1,0 +1,8 @@
+.lodging-list{ 'ng-init' => 'init()' }
+  %h1 Lodgings near you
+  %ul.lodging-list__items
+    %li{ 'ng-repeat' => 'item in items' }
+      %a{ 'ui-sref' => 'details({place_id: item.place_id})' } {{item.name}}
+
+  %div
+    %p Tip: Double click on the map changes current location

@@ -1,0 +1,15 @@
+Rails.application.routes.draw do
+
+  devise_for :users
+  root 'home#index'
+
+  namespace :api, default: { respond_to: :json } do
+    namespace :v0 do
+      resources :hotels, only: [ :show, :index ]
+      resources :bookings, only: [ :create, :index ] do
+
+      end
+    end
+  end
+
+end

@@ -1,0 +1,15 @@
+.lodging-details{ 'ng-init' => 'getDetails()' }
+  .lodging-details__navbar
+    %a{ 'ui-sref' => 'list' } Back to list
+  %h1 {{place_info.name}}
+  .lodging-details__address
+    {{place_info.formatted_address}}
+  .lodging-details__phones
+    {{place_info.international_phone_number}}
+  .lodging-details__website
+    %a{ href: '{{place_info.website}}', target: '_blank' } {{place_info.website}}
+  %h3 Booking
+  %div{ 'ng-if' => '!authenticated'}
+    %p
+      %a{ href: '/users/sign_in' } Please sign in to book
+  %div{ 'ng-if' => 'authenticated', 'ng-include' => "'booking-form.html'" }
