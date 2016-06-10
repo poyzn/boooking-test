@@ -12,8 +12,14 @@ class API::V0::BookingsController < API::APIController
     if @booking.save
       render json: @booking
     else
-      render json: { error: true, errors: @booking.errors }, status: 400
+      render json: { message: @booking.errors.map { |key, val| "#{t key} #{val}" }.join(', ') } , status: 400
     end
+  end
+
+  def user
+    user = User.find params[:user_id]
+    @bookings = user.bookings
+    render json: @bookings
   end
 
   protected

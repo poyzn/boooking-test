@@ -1,7 +1,10 @@
 .booking-form
-  %form{ id: 'booking-form' }
-    {{place_info.place_id}}
-    %input{ type: 'hidden', 'ng-model' => 'booking.google_place_id', 'ng-init' => 'booking.google_place_id=place_info.place_id', 'value' => '{{place_info.place_id}}' }
+  .alert.alert-success{ 'ng-if' => 'formSent && formSuccess && !formError' }
+    Your booking information has been sent. Thank you!
+  .alert.alert-danger{ 'ng-if' => 'formSent && formError && !formSuccess' }
+    {{formErrorMessage}}
+  %form{ id: 'booking-form',  }
+    %input{ type: 'hidden', 'ng-model' => 'booking.google_place_id' }
     .row
       .col-xs-6
         .form-row

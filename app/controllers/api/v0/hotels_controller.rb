@@ -21,7 +21,7 @@ class API::V0::HotelsController < API::APIController
 
   def check_params
     if !params[:lat] || !params[:lon]
-      render nothing: true
+      render nothing: true, status: 400
     end
   end
 

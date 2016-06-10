@@ -15,11 +15,13 @@ angular.module('Boooking').service 'Location', [ '$q', '$window', '$rootScope', 
       )
     return deferred.promise
 
-  self.gatherLocation().then (data) ->
-    $rootScope.lat = data.coords.latitude
-    $rootScope.lng = data.coords.longitude
-    console.log data
-    $rootScope.$emit 'gotLocation'
+  self.gatherLocation()
+    .then (data) ->
+      $rootScope.lat = data.coords.latitude
+      $rootScope.lng = data.coords.longitude
+
+      $rootScope.$emit 'gotLocation'
+
 
 ]
 

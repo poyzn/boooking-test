@@ -1,6 +1,6 @@
 angular.module('Boooking').controller 'MapCtrl', [ '$scope', '$http', '$state', 'Lodging', '$rootScope',  ($scope, $http, $state, Lodging, $rootScope ) ->
 
-  $scope.lat = 0
+  $scope.lat = 51.623896
   $scope.lon = 0
   $scope.map = null
   $scope.markers = []
@@ -34,13 +34,14 @@ angular.module('Boooking').controller 'MapCtrl', [ '$scope', '$http', '$state', 
       $scope.removeCurrentMarkers()
       $scope.loadLodgings()
       $scope.setMyLocation()
-      $rootScope.$emit('gotLocation')
+      $rootScope.$emit('updateList')
 
   $scope.loadLodgings = ->
     Lodging.loadLodgingList($scope.lat, $scope.lng).then (items) ->
-      for i in [0..(items.length-1)]
-        item = items[i]
-        $scope.createMarker item
+      if items.length > 0
+        for i in [0..(items.length-1)]
+          item = items[i]
+          $scope.createMarker item
 
   $scope.createMarker = (item) ->
     marker = new google.maps.Marker {
@@ -59,9 +60,10 @@ angular.module('Boooking').controller 'MapCtrl', [ '$scope', '$http', '$state', 
 
 
   $scope.removeCurrentMarkers = ->
-    for i in [0..($scope.markers.length-1)]
-      $scope.markers[i].setMap(null)
-    $scope.markers = []
+    if $scope.markers && $scope.markers.length > 0
+      for i in [0..($scope.markers.length-1)]
+        $scope.markers[i].setMap(null)
+      $scope.markers = []
 
 
   $scope.setMyLocation = ->
