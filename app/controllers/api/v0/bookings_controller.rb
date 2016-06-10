@@ -12,7 +12,7 @@ class API::V0::BookingsController < API::APIController
     if @booking.save
       render json: @booking
     else
-      render json: { message: @booking.errors.map { |key, val| "#{t key} #{val}" }.join(', ') } , status: 400
+      render json: { message: @booking.errors.full_messages.join(', ') }, status: 400
     end
   end
 

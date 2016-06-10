@@ -17,7 +17,7 @@ class Booking < ApplicationRecord
   def booking_dates
     if check_out.present? && check_in.present?
       if (check_out.to_date - check_in.to_date).to_i < 1
-        self.errors.add :check_in, 'The check-out date precedes the check-in date'
+        self.errors.add :base, 'The check-out date precedes the check-in date'
       end
     end
   end
@@ -26,7 +26,7 @@ class Booking < ApplicationRecord
     if check_out.present? && check_in.present?
       bookings = user.bookings.where('(check_in >= ? AND check_out <= ?) OR (check_in >= ? AND check_in <= ?) OR (check_out <= ? AND check_out >= ?)', check_in.to_date, check_out.to_date, check_in.to_date, check_out.to_date, check_out.to_date, check_in.to_date )
       if bookings.any?
-        self.errors.add :check_in, 'You already have active bookings for this dates'
+        self.errors.add :base, 'You already have active bookings for this dates'
       end
     end
   end
