@@ -1,4 +1,4 @@
-angular.module('Boooking').factory 'Lodging', ( $http, Location ) ->
+angular.module('Boooking').factory 'Lodging', [ '$http', 'Location', ( $http, Location ) ->
 
   return {
     lat: null
@@ -19,3 +19,4 @@ angular.module('Boooking').factory 'Lodging', ( $http, Location ) ->
           return response.data
   }
 
+]

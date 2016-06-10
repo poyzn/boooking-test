@@ -1,6 +1,6 @@
 angular.module 'Boooking', ['ui.router', 'templates', 'Devise', 'ui.bootstrap']
 
-angular.module('Boooking').config ($stateProvider, $urlRouterProvider) ->
+angular.module('Boooking').config [ '$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) ->
   $stateProvider
     .state 'list',
       url: ""
@@ -14,3 +14,4 @@ angular.module('Boooking').config ($stateProvider, $urlRouterProvider) ->
       url: "/lodging/:place_id"
       templateUrl: "details.html"
       controller: 'LodgingCtrl'
+]

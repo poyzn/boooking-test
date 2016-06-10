@@ -1,4 +1,4 @@
-angular.module('Boooking').service 'Location', ( $q, $window, $rootScope ) ->
+angular.module('Boooking').service 'Location', [ '$q', '$window', '$rootScope', ( $q, $window, $rootScope ) ->
 
   self = this
 
@@ -20,4 +20,6 @@ angular.module('Boooking').service 'Location', ( $q, $window, $rootScope ) ->
     $rootScope.lng = data.coords.longitude
     console.log data
     $rootScope.$emit 'gotLocation'
+
+]
 
