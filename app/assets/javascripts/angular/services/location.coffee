@@ -22,6 +22,5 @@ angular.module('Boooking').service 'Location', [ '$q', '$window', '$rootScope', 
 
       $rootScope.$emit 'gotLocation'
 
-
 ]
 
