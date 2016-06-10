@@ -1,13 +1,16 @@
 angular.module('Boooking').controller 'MapCtrl', [ '$scope', '$http', '$state', 'Lodging', '$rootScope',  ($scope, $http, $state, Lodging, $rootScope ) ->
 
-  $scope.lat = 51.623896
-  $scope.lon = 0
+  $scope.lat = 51.502065
+  $scope.lng = -0.040494
   $scope.map = null
   $scope.markers = []
 
+  $scope.init = ->
+    $scope.loadMap()
+
   $rootScope.$on 'gotLocation', ->
     $scope.lat = $rootScope.lat
-    $scope.lon = $rootScope.lng
+    $scope.lng = $rootScope.lng
     $scope.loadMap()
     $scope.loadLodgings()
     $scope.setMyLocation()
@@ -29,7 +32,7 @@ angular.module('Boooking').controller 'MapCtrl', [ '$scope', '$http', '$state', 
       $rootScope.lat = e.latLng.lat()
       $scope.lat = e.latLng.lat()
       $rootScope.lng = e.latLng.lng()
-      $scope.lon = e.latLng.lng()
+      $scope.lng = e.latLng.lng()
       $scope.map.panTo(e.latLng)
       $scope.removeCurrentMarkers()
       $scope.loadLodgings()
