@@ -8,7 +8,9 @@ Things you may want to cover:
 * Ruby version 2.3.0
 * Rails version 5
 
-# Tips
+# Demo
+
+0. Go to http://boooking-test.herokuapp.com/
 
 1. Allow browser to get your location
 
